@@ -3,10 +3,12 @@ import { RouterOutlet } from '@angular/router';
 import {Zodiaco} from './formularios/zodiaco/zodiaco';
 import { OnInit } from '@angular/core';
 import { initFlowbite } from 'flowbite';
+import {Navbar} from './navbar/navbar'
+import {Usuario} from './formularios/usuario/usuario'
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Zodiaco],
+  imports: [RouterOutlet,Navbar,Usuario],
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })
