@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div class="formulario">
+    <form>
+        <h3>Datos Personales</h3>
+       <label for="nombre">Nombre:</label>
+       <input [(ngModel)]="nombre" id="nombre" name="nombre" type="text" >
+        <br>
+
+       <label for="apaterno">Apellido paterno:</label>
+       <input [(ngModel)]="apaterno" id="apaterno" name="apaterno" type="text" >
+        <br>
+
+        <label for="amaterno">Apellido materno:</label>
+        <input [(ngModel)]="amaterno" id="amaterno" name="amaterno" type="text" >
+
+        <h3>Fecha de nacimiento</h3>
+
+        <label for="dia">Día:</label>
+        <input [(ngModel)]="dia" id="dia" name="dia" type="text" >
+        
+        <label for="mes">Mes:</label>
+        <input [(ngModel)]="mes" id="mes" name="mes" type="text" >
+        
+        <label for="anio">Año:</label>
+        <input  [(ngModel)]="anio" id="anio" name="anio" type="text">
+
+        <h3>Sexo</h3>
+        <label for="masculino">Masculino</label>
+        <input [(ngModel)]="sexo" id="masculino" name="sexo" type="radio" value="Masculino">
+        
+        <label for="femenino">Femenino</label>
+        <input [(ngModel)]="sexo" id="femenino" name="sexo" type="radio" value="Femenino">
+
+        <br>
+        <button type="button" (click)="obtener()">
+            Obtener
+        </button>
+    </form>
+
+    <div>
+
+        <h3>Resultado</h3>
+        <p>Hola {{nombre}} {{apaterno}} {{amaterno}}</p>
+        <p> Tienes {{edad}} años.</p>
+        <p>
+            Tu signo zodiacal chino es:
+            <strong>{{sigzodiacal}}</strong>
+        </p>
+
+        <img [src]="imagen" width="200" alt="Imagen del signo zodiacal">
+
+    </div>
+
+</div>
+
+  
+</body>
+</html>
