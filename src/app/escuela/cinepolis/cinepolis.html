@@ -1,0 +1,119 @@
+<div class="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow">
+
+  <h1 class="text-3xl font-bold text-gray-900 mb-6">
+    Cinépolis
+  </h1>
+
+  <form [formGroup]="formulario">
+
+    <div class="mb-5">
+      <label class="block mb-2 text-sm font-medium text-gray-900">
+        Nombre
+      </label>
+
+      <input
+        type="text"
+        formControlName="nombre"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+               block w-full p-2.5"
+        placeholder="Nombre">
+    </div>
+
+
+    <div class="mb-5">
+      <label class="block mb-2 text-sm font-medium text-gray-900">
+        Cantidad de Compradores
+      </label>
+
+      <input
+        type="number"
+        formControlName="compradores"
+        min="1"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+               block w-full p-2.5"
+        placeholder="Cantidad de compradores">
+    </div>
+
+    <div class="mb-5">
+
+      <label class="block mb-2 text-sm font-medium text-gray-900">
+        Tarjeta Cineco
+      </label>
+
+      <div class="flex gap-5">
+
+        <label>
+          <input
+            type="radio"
+            formControlName="tarjeta"
+            value="si">
+          Sí
+        </label>
+
+        <label>
+          <input
+            type="radio"
+            formControlName="tarjeta"
+            value="no">
+          No
+        </label>
+
+      </div>
+
+    </div>
+
+    <div class="mb-5">
+      <label class="block mb-2 text-sm font-medium text-gray-900">
+        Cantidad de Boletos
+      </label>
+
+      <input
+        type="number"
+        formControlName="cantidad"
+        min="1"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+               block w-full p-2.5"
+        placeholder="Cantidad de boletos">
+    </div>
+
+
+    <div
+      *ngIf="mensaje"
+      class="mb-5 p-3 bg-red-100 text-red-700 rounded-lg">
+      {{ mensaje }}
+    </div>
+
+<div class="flex gap-4">
+<button
+        type="button"
+        (click)="muestraCine()"
+        class="text-white bg-blue-700 hover:bg-blue-800
+               font-medium rounded-lg text-sm px-5 py-2.5">
+        Procesar
+      </button>
+</div>
+    
+<h2 class="text-2xl font-bold text-gray-900 mt-8 mb-4">
+  Salidas
+</h2>
+
+   <h2>Nombre: {{nuevaVenta.nombre}}</h2>
+   <h2>Compradores: {{nuevaVenta.compradores}}</h2>
+   <h2>Cantidad de Boletos: {{nuevaVenta.cantidad}}</h2>
+   <h2>Tarjeta Cineco: {{nuevaVenta.tarjeta}}</h2>
+   <h2>Valor a Pagar: ${{nuevaVenta.valor}}</h2>
+
+ <br>
+    <div class="flex gap-4">
+      <button
+        type="button"
+        (click)="veregistro()"
+        class="text-white bg-gray-600 hover:bg-gray-700
+               font-medium rounded-lg text-sm px-5 py-2.5">
+        Ver Registro
+      </button>
+    </div>
+
+  </form>
+
+</div>
