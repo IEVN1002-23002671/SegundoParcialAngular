@@ -1,6 +1,8 @@
-export interface IAlumnos {
-    matricula:string;
-    nombre:string;
-    correo:string;
-    materia: string;
+
+export interface IAlumno {
+  matricula: string;
+  nombre: string;
+  correo: string;
+  materia: string;
 }
+

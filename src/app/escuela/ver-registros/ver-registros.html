@@ -1,0 +1,187 @@
+
+<div class="max-w-6xl mx-auto p-6 bg-white rounded-lg shadow">
+
+  <h1 class="text-3xl font-bold text-gray-900 mb-6">
+    Registros de Cinépolis
+  </h1>
+
+  <!-- Formulario para editar -->
+  <div *ngIf="indiceEdicion !== -1"
+       class="mb-8 p-6 border border-gray-300 rounded-lg bg-gray-50">
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-5">
+      Editar registro
+    </h2>
+
+    <form [formGroup]="formulario" (ngSubmit)="guardarCambios()">
+
+      <!-- Nombre -->
+      <div class="mb-4">
+        <label class="block mb-2 text-sm font-medium text-gray-900">
+          Nombre
+        </label>
+
+        <input
+          type="text"
+          formControlName="nombre"
+          class="bg-white border border-gray-300 rounded-lg block w-full p-2.5">
+      </div>
+
+      <!-- Compradores -->
+      <div class="mb-4">
+        <label class="block mb-2 text-sm font-medium text-gray-900">
+          Número de compradores
+        </label>
+
+        <input
+          type="number"
+          min="1"
+          formControlName="compradores"
+          class="bg-white border border-gray-300 rounded-lg block w-full p-2.5">
+      </div>
+
+      <!-- Cantidad de boletos -->
+      <div class="mb-4">
+        <label class="block mb-2 text-sm font-medium text-gray-900">
+          Cantidad de boletos
+        </label>
+
+        <input
+          type="number"
+          min="1"
+          formControlName="cantidad"
+          class="bg-white border border-gray-300 rounded-lg block w-full p-2.5">
+      </div>
+
+      <!-- Tarjeta Cineco con radio -->
+      <div class="mb-5">
+        <label class="block mb-2 text-sm font-medium text-gray-900">
+          ¿Tiene tarjeta Cineco?
+        </label>
+
+        <div class="flex gap-6">
+
+          <label class="flex items-center gap-2">
+            <input
+              type="radio"
+              formControlName="tarjeta"
+              value="si">
+            Sí
+          </label>
+
+          <label class="flex items-center gap-2">
+            <input
+              type="radio"
+              formControlName="tarjeta"
+              value="no">
+            No
+          </label>
+
+        </div>
+      </div>
+
+      <!-- Botones del formulario -->
+      <div class="flex gap-3">
+
+        <button
+          type="submit"
+          class="text-white bg-green-600 hover:bg-green-700 rounded-lg px-5 py-2.5">
+          Guardar cambios
+        </button>
+
+        <button
+          type="button"
+          (click)="cancelarEdicion()"
+          class="text-white bg-gray-600 hover:bg-gray-700 rounded-lg px-5 py-2.5">
+          Cancelar
+        </button>
+
+      </div>
+
+    </form>
+  </div>
+
+  <!-- Tabla de registros -->
+  <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+
+    <table class="w-full text-sm text-left text-gray-500">
+
+      <thead class="text-xs text-gray-700 uppercase bg-gray-100">
+        <tr>
+          <th class="px-6 py-3">Nombre</th>
+          <th class="px-6 py-3">Compradores</th>
+          <th class="px-6 py-3">Boletos</th>
+          <th class="px-6 py-3">Tarjeta Cineco</th>
+          <th class="px-6 py-3">Total</th>
+          <th class="px-6 py-3">Acciones</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <tr
+          *ngFor="let venta of registros; let i = index"
+          class="bg-white border-b border-gray-200 hover:bg-gray-50">
+
+          <td class="px-6 py-4 font-medium text-gray-900">
+            {{ venta.nombre }}
+          </td>
+
+          <td class="px-6 py-4">
+            {{ venta.compradores }}
+          </td>
+
+          <td class="px-6 py-4">
+            {{ venta.cantidad }}
+          </td>
+
+          <td class="px-6 py-4">
+            {{ venta.tarjeta === 'si' ? 'Sí' : 'No' }}
+          </td>
+
+          <td class="px-6 py-4">
+            {{ venta.valor | currency:'MXN':'symbol':'1.2-2' }}
+          </td>
+
+          <td class="px-6 py-4">
+            <div class="flex gap-2">
+
+              <button
+                type="button"
+                (click)="editarRegistro(i)"
+                class="px-4 py-2 text-sm text-white bg-green-600 rounded-lg hover:bg-green-700">
+                Editar
+              </button>
+
+              <button
+                type="button"
+                (click)="eliminarRegistro(i)"
+                class="px-4 py-2 text-sm text-white bg-red-600 rounded-lg hover:bg-red-700">
+                Eliminar
+              </button>
+
+            </div>
+          </td>
+
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Mensaje cuando no hay registros -->
+  <div
+    *ngIf="registros.length === 0"
+    class="p-4 mt-4 text-sm text-gray-800 rounded-lg bg-gray-100">
+    No hay ventas registradas.
+  </div>
+
+  <!-- Botón para regresar -->
+  <button
+    type="button"
+    (click)="regresar()"
+    class="mt-6 text-white bg-blue-700 hover:bg-blue-800 rounded-lg px-5 py-2.5">
+    Regresar a Cinépolis
+  </button>
+
+</div>

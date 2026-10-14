@@ -32,7 +32,16 @@ export const routes: Routes = [
                     import('./escuela/cinepolis/cinepolis').then(
                         (c)=>c.Cinepolis 
                     )
-         }
+         },
+         
+        {
+                path: 'ver-registros',
+                loadComponent:() =>
+                import('./escuela/ver-registros/ver-registros').then(
+                (c)=>c.VerRegistros
+                    )
+        }
+
         ]
     },
     {
